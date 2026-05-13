@@ -1,0 +1,19 @@
+export type Screen = "setup" | "playback" | "settings" | "progress";
+export type Mode = "major" | "minor";
+export type Groove = "rock" | "rock-open-hat" | "half-time-rock" | "shuffle-blues" | "funk-16th" | "muted-funk" | "ballad-ride" | "tom-build" | "trap-808" | "neo-soul" | "latin-pop" | "cinematic-hybrid";
+export type PracticeMode = "roots" | "thirds" | "fifths" | "all" | "scale" | "target";
+export type Tuning = "EADG" | "BEADG" | "DropD";
+export type OverlayMode = "primary" | "alternative";
+export type Phase = "stopped" | "count-in" | "sequence";
+export type ChordSound = "warm-pad" | "piano" | "electric-piano" | "organ" | "synth-pad" | "choir" | "brass" | "marimba" | "lofi-keys" | "rock-guitar" | "violin" | "cello" | "trumpet" | "trombone" | "harp" | "808-sub" | "wobble-bass" | "warped-fall";
+export type ChordToneSet = "triad" | "seventh" | "ninth" | "add9" | "sus2" | "sus4" | "shell" | "wide-open";
+
+export type Chord = { degree: number; symbol: string; notes: string[] };
+export type Preset = { id: number; name: string; keyRoot: string; mode: Mode; progression: string; tempo: number; groove: Groove; introCount: number; barPattern?: string; chordSound: ChordSound; chordToneSet?: ChordToneSet };
+export type FretPos = { fret: number; note: string; isRoot: boolean; isThird: boolean; isFifth: boolean; isTarget: boolean; isChordTone: boolean; isScaleTone: boolean };
+export type Point = { stringIndex: number; fret: number; note: string; role: "root" | "third" | "fifth" };
+export type TriangleTemplate = { thirdStringDelta: number; thirdFretDelta: number; fifthStringDelta: number; fifthFretDelta: number };
+export type TriangleShape = { id: string; root: Point; third: Point; fifth: Point };
+export type TriangleCandidate = TriangleTemplate & { signature: string; score: number; repeatCount: number };
+export type ProgressionOption = { value: string; label: string };
+export type MixerState = { click: number; drums: number; chords: number; mute: Record<"click"|"drums"|"chords", boolean>; solo: Record<"click"|"drums"|"chords", boolean> };
